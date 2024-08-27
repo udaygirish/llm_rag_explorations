@@ -1,0 +1,12 @@
+# YAML Definition for Scraping different Websites 
+# As most of these Websites are dynamic and needs BeautfilSoup, Selenium for  Loading based Scraping
+
+# Scraping Configuration Tuple 
+# Key : (Website Name, Website URL, [List of XPaths for Scraping])
+
+websites:
+  ['ClinicalTrialsGovStudy', 'https://clinicaltrials.gov/study/', ["brief-title", "info-provided-title", "study-overview-item-title", "text-block"]]
+
+
+# Note: Important the Current Scraping is only based on set of data we already have seen
+# New Websites might be different and scraping can be different so avoiding it for now 

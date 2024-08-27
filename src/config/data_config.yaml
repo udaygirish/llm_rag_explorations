@@ -1,0 +1,15 @@
+data_directories:
+  stored_csv_xlsx_directory: data/csv_xlsx
+  sqldb_directory: data/db_storage/sqldb.db
+  uploaded_files_sqldb_directory: data/db_storage/uploaded_files_sqldb.db
+  stored_csv_xlsx_sqldb_directory: data/db_storage/csv_xlsx_sqldb.db
+  persist_directory: data/chroma
+  index_directory: data/index
+  db_path: data/db_storage
+  uploaded_files_directory: data/uploaded_files
+  storage_download_directory: data/storage_download
+
+vector_store_choice:
+  vector_store: chromadb 
+  vector_store_path: data/chroma
+  vector_store_list: ["FAISS", "HNSW", "ANNOY", "CHROMA"]
