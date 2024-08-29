@@ -1,14 +1,14 @@
 model_config:
-      llm_list: ["gpt-4o", "llama3-8b", "gpt-3.5-turbo", "claude-3-sonnet-20240229",
+      llm_list: ["gpt-4o", "llama3.1:8b", "gpt-3.5-turbo", "claude-3-sonnet-20240229",
                 "gemini-pro", "command-r", "accounts/fireworks/models/mixtral-8x7b-instruct", 
                 "mistral-large-latest", "OpenAI"]
       llm_name: 0 # Take from above list -1
       embedding_model_list: ["text-embedding-ada-002", "bge-large-en", "bge-reranker-large", 
                     "all-MiniLM-L6-v2", "embed-english-v3.0", "sentence-transformers/all-mpnet-base-v2"]
       embedding_model: 0 # Take from above list -1
-      engine_list: ["AzureChatOpenAI", "OpenAI", "AnthropicAI", "GoogleAI", "FireworksAI", "MistralAI",
-                    "ollama", "llama-cpp", "huggingfacehub"]
-      engine : 0    
+      engine_list: ["AzureChatOpenAI", "ollama","OpenAI", "AnthropicAI", "GoogleAI", "FireworksAI", "MistralAI",
+                  "llama-cpp", "huggingfacehub"]
+      engine : 0 # Take from above list -1
 
 #llm_tokenizer: "AzureAI"  
 
@@ -24,7 +24,7 @@ llm_config:
         engine: "gpt-4o"
         temperature: 0.0
 
-    llama3-8b:
+    'llama3.1:8b':
         agent_llm_system_role: "Given the following user question, corresponding SQL query, and SQL result, answer the user question.\n
                             Question: {question}\n
                             SQL Query: {query}\n

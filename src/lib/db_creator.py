@@ -6,17 +6,20 @@ import os
 import pandas as pd 
 from sqlalchemy import create_engine, inspect
 import yaml
+import sys 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 from utilities.logger import logger
 
 class DBCreator:
     # This DB is to create SQLite Database from CSV/XLSX Files
     # which are preconverted to Dataframes
     def __init__(self) -> None:
-        with open("configs/data_config.yaml") as cfg:
+        with open("src/config/data_config.yaml") as cfg:
             data_config = yaml.load(cfg, Loader=yaml.FullLoader)
-        db_path = data_config["db_path"]
-        uploaded_files_db_path = data_config["uploaded_files_db_path"]
-        storage_download_db_path = data_config["storage_download_db_path"]
+        
+        db_path = data_config["data_directories"]["db_path"]
+        uploaded_files_db_path = data_config["data_directories"]["uploaded_files_db_path"]
+        storage_download_db_path = data_config["data_directories"]["storage_download_db_path"]
         self.engine = create_engine(db_path)
     
     def _create_db(self, df_list,filename_list):

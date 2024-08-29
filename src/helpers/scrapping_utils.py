@@ -4,7 +4,8 @@ import time
 import requests
 from typing import list, dict
 import yaml
-
+import sys 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 from utilities.logger import logger
 
 # Selenium and Beautiful Soup Details

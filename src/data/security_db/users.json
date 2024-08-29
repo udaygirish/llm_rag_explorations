@@ -1,0 +1,17 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "uday",
+            "email": "umaradan@its.jnj.com",
+            "password": "uday123",
+            "role": "admin"
+        },
+        {
+            "id": 2,
+            "name": "camilo",
+            "email": "camilo@its.jnj.com",
+            "password": "camilo123",
+            "role": "user"
+        }]
+}

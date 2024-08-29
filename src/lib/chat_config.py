@@ -2,6 +2,8 @@ import os
 from dotenv import load_dotenv 
 import yaml
 import shutil 
+import sys 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 from utilities.logger import logger
 
 
@@ -28,6 +30,7 @@ from langchain_mistralai  import ChatMistralAI
 from langchain_openai import ChatOpenAI 
 from langchain_huggingface import HuggingFaceEmbeddings
 
+
 # For open Source models 
 # ToDO: Plan to support atleast most of the Top open source models
 # Configuations - Ollama, llama.cpp, Huggingface 
@@ -37,7 +40,7 @@ from langchain_ollama import ChatOllama
 
 class ChatConfig:
     def __init__(self) -> None:
-        with open("configs/model_config.yml") as cfg:
+        with open("src/config/model_config.yaml") as cfg:
             config = yaml.load(cfg, Loader=yaml.FullLoader)
         
         model_config= config['model_config']
@@ -51,6 +54,8 @@ class ChatConfig:
         self.rag_llm_system_role = llm_config[self.model_name]['rag_llm_system_role']
         self.temperature = llm_config[self.model_name]['temperature']
         self.model_engine = llm_config[self.model_name]['engine']
+        
+        self.load_chat_model()
     
     def load_chat_model(self):
         # ToDo:  Convert this to a Dictionary based format 
@@ -69,7 +74,11 @@ class ChatConfig:
                     azure_endpoint=os.getenv("OPENAI_API_BASE")
                 )
         else:
-            self.embedding_client = HuggingFaceEmbeddings(model=self.embedding_model)
+            model_kwargs = {'device': 'cpu'}
+            encode_kwargs = {'normalize_embeddings': False}
+            self.embedding_client = HuggingFaceEmbeddings(model_name=self.embedding_model, 
+                                                          model_kwargs=model_kwargs,
+                                                          encode_kwargs=encode_kwargs)
         if self.engine.lower() == "azurechatopenai":
             # self.azure_openai_client = AzureOpenAI(
             #     api_key=os.getenv("OPENAI_API_KEY"),

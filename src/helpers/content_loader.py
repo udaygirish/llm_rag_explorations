@@ -12,7 +12,8 @@ import os
 from glob import glob 
 from tqdm import tqdm, trange 
 import re 
-
+import sys 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), os.path.pardir)))
 # Import Loggers 
 from utilities.logger import logger
 

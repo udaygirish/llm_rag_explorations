@@ -1,2 +1,6 @@
 rag_config: 
     top_k: 5
+    collection_name: titanic_small 
+    
+    
+#"RAG_test"
